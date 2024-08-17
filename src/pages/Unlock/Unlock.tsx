@@ -6,20 +6,14 @@ import type {
   WalletConnectLoginButtonPropsType
 } from '@multiversx/sdk-dapp/UI';
 import {
-  ExtensionLoginButton,
-  LedgerLoginButton,
-  OperaWalletLoginButton,
-  WalletConnectLoginButton,
   WebWalletLoginButton as WebWalletUrlLoginButton,
-  XaliasCrossWindowLoginButton,
-  CrossWindowLoginButton,
-  MetamaskProxyButton
+  CrossWindowLoginButton
 } from 'components/sdkDappComponents';
 import { nativeAuth } from 'config';
 import { RouteNamesEnum } from 'localConstants';
 import { useNavigate } from 'react-router-dom';
 import { AuthRedirectWrapper } from 'wrappers';
-import { WebWalletLoginWrapper, XaliasLoginWrapper } from './components';
+import { WebWalletLoginWrapper } from './components';
 
 type CommonPropsType =
   | OperaWalletLoginButtonPropsType
@@ -29,7 +23,7 @@ type CommonPropsType =
   | WalletConnectLoginButtonPropsType;
 
 // choose how you want to configure connecting to the web wallet
-const USE_WEB_WALLET_CROSS_WINDOW = true;
+const USE_WEB_WALLET_CROSS_WINDOW = false;
 
 const WebWalletLoginButton = USE_WEB_WALLET_CROSS_WINDOW
   ? CrossWindowLoginButton
@@ -59,31 +53,7 @@ export const Unlock = () => {
           </div>
 
           <div className='flex flex-col md:flex-row'>
-            <WalletConnectLoginButton
-              loginButtonText='xPortal App'
-              {...commonProps}
-            />
-            <LedgerLoginButton loginButtonText='Ledger' {...commonProps} />
-            <ExtensionLoginButton
-              loginButtonText='DeFi Wallet'
-              {...commonProps}
-            />
-            <OperaWalletLoginButton
-              loginButtonText='Opera Crypto Wallet - Beta'
-              {...commonProps}
-            />
-            <XaliasCrossWindowLoginButton
-              loginButtonText='xAlias'
-              data-testid='xAliasLoginBtn'
-              customWalletAddress='https://127.0.0.1:3000'
-              {...commonProps}
-            />
-            <XaliasLoginWrapper {...commonProps} />
             <WebWalletLoginWrapper {...commonProps} />
-            <MetamaskProxyButton
-              loginButtonText='Metamask Proxy'
-              {...commonProps}
-            />
           </div>
         </div>
       </div>
