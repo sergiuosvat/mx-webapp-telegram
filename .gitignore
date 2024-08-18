@@ -13,7 +13,6 @@ wdio/node_modules
 
 # production
 /build
-bot_commands.js
 
 # misc
 /src/config/index.ts
